@@ -1,6 +1,6 @@
 package com.example.androidjetpackcompose.domain.model
 
-import com.example.androidjetpackcompose.network.model.RecipeNetworkEntity
+import com.example.androidjetpackcompose.network.model.model.RecipeNetworkEntity
 import com.example.androidjetpackcompose.util.EntityMapper
 
 class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity, Recipe> {
@@ -37,6 +37,7 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity, Recipe> {
 
         )
     }
+
 
     fun mapFromEntityList(initial: List<RecipeNetworkEntity>): List<Recipe> {
         return initial.map { mapFromEntity(it) }

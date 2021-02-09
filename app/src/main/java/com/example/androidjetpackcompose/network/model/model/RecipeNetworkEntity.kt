@@ -1,4 +1,4 @@
-package com.example.androidjetpackcompose.network.model
+package com.example.androidjetpackcompose.network.model.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -24,7 +24,7 @@ class RecipeNetworkEntity(
     var ingredients: List<String>? = null,
     @SerializedName("date_added")
     var date_added: String? = null,
-    @SerializedName("featured_image")
+    @SerializedName("date_updated")
     var date_updated: String? = null
 
 
