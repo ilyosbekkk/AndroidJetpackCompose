@@ -1,6 +1,6 @@
 package com.example.androidjetpackcompose.network.model
 
-import com.example.androidjetpackcompose.network.model.model.RecipeNetworkEntity
+import com.example.androidjetpackcompose.network.model.model.RecipeDto
 import com.example.androidjetpackcompose.network.model.reponses.RecipeSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -20,7 +20,7 @@ interface RecipeService {
 
         @Header("Authorization") token: String,
         @Query("id") id:Int,
-    ):RecipeNetworkEntity
+    ):RecipeDto
 
 
 }

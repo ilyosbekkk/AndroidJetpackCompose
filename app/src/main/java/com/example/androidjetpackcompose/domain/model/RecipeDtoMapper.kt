@@ -1,10 +1,10 @@
 package com.example.androidjetpackcompose.domain.model
 
-import com.example.androidjetpackcompose.network.model.model.RecipeNetworkEntity
-import com.example.androidjetpackcompose.util.EntityMapper
+import com.example.androidjetpackcompose.network.model.model.RecipeDto
+import com.example.androidjetpackcompose.util.DomainMapper
 
-class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity, Recipe> {
-    override fun mapFromEntity(entity: RecipeNetworkEntity): Recipe {
+class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
+    override fun mapToDomainModel(entity: RecipeDto): Recipe {
         return Recipe(
             id = entity.pk,
             title = entity.title,
@@ -21,8 +21,8 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity, Recipe> {
         )
     }
 
-    override fun toEntity(domainModel: Recipe): RecipeNetworkEntity {
-        return RecipeNetworkEntity(
+    override fun mapFromDomainModel(domainModel: Recipe): RecipeDto {
+        return RecipeDto(
             pk = domainModel.id,
             title = domainModel.title,
             publisher = domainModel.publisher,
@@ -39,11 +39,11 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity, Recipe> {
     }
 
 
-    fun mapFromEntityList(initial: List<RecipeNetworkEntity>): List<Recipe> {
-        return initial.map { mapFromEntity(it) }
+    fun mapFromEntityList(initial: List<RecipeDto>): List<Recipe> {
+        return initial.map { mapToDomainModel(it) }
     }
 
-    fun mapToEntityList(initial: List<Recipe>): List<RecipeNetworkEntity> {
-        return initial.map { toEntity(it) }
+    fun mapToEntityList(initial: List<Recipe>): List<RecipeDto> {
+        return initial.map { mapFromDomainModel(it) }
     }
 }
