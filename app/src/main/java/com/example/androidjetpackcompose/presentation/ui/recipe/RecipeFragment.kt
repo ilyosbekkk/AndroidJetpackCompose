@@ -1,4 +1,4 @@
-package com.example.androidjetpackcompose
+package com.example.androidjetpackcompose.presentation.ui.recipe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class RecipeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

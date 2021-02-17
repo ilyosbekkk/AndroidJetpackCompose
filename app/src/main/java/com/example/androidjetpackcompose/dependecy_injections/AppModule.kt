@@ -1,4 +1,4 @@
-package com.example.androidjetpackcompose.di
+package com.example.androidjetpackcompose.dependecy_injections
 
 import android.content.Context
 import com.example.androidjetpackcompose.BaseApplication
