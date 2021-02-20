@@ -16,9 +16,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.androidjetpackcompose.R
+import com.example.androidjetpackcompose.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,14 +28,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class RecipeListFragment : Fragment() {
 
 
-    val viewModel: RecipeListViewModel by viewModels()
+    val viewModel: RecipeListViewModel by activityViewModels()
 
-    private  val TAG = "RecipeListFragment"
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.e(TAG, "onCreate: ${viewModel}")
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,8 +38,13 @@ class RecipeListFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+                val  recipe = viewModel.individualRecipe.value
+                val  recipes = viewModel.recipes.value;
+
+                print(recipe)
+
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "Recipe List", style = TextStyle(fontSize = 21.sp))
+                    Text(text = "${recipes}", style = TextStyle(fontSize = 21.sp))
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(onClick = { findNavController().navigate(R.id.viewRecipe) }) {
                         Text(text = "Recipe List", style = TextStyle(fontSize = 21.sp))

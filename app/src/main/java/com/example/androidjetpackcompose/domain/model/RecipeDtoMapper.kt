@@ -1,7 +1,9 @@
 package com.example.androidjetpackcompose.domain.model
 
+import android.util.Log
 import com.example.androidjetpackcompose.network.model.model.RecipeDto
 import com.example.androidjetpackcompose.util.DomainMapper
+import com.example.androidjetpackcompose.util.TAG
 
 class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
     override fun mapToDomainModel(entity: RecipeDto): Recipe {
