@@ -13,9 +13,6 @@ class RecipeRepositoryImplementation(
 
 
     override suspend fun search(token: String, page: Int, query: String): List<Recipe> {
-        Log.e(TAG, "search: ${token}")
-        Log.e(TAG, "search: ${page}")
-        Log.e(TAG, "search: ${query}")
         return mapper.toDomainList(recipeService.search(token, page, query).recipes)
     }
 

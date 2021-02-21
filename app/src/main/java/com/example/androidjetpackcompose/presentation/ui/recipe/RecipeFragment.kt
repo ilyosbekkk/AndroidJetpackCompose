@@ -25,10 +25,6 @@ class RecipeFragment : Fragment() {
     private  val TAG = "RecipeFragment"
     val viewModel: RecipeListViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.e(TAG, "onCreate: ${viewModel}")
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

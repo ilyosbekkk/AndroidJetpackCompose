@@ -2,8 +2,8 @@ package com.example.androidjetpackcompose.presentation.ui.recipe_list
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.remember
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidjetpackcompose.domain.model.Recipe
@@ -22,14 +22,23 @@ class RecipeListViewModel
     ViewModel() {
     val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
     val individualRecipe: MutableState<Recipe> = mutableStateOf(Recipe())
+    val query = mutableStateOf("")
 
     init {
+        newSearch(query = query.value)
+    }
+
+    fun newSearch(query: String) {
         viewModelScope.launch {
-            val recipess = recipeRepository.search(token = token, page = 2,  query = "beef")
-            val recipe = recipeRepository.get(token = token, id = 9)
-            individualRecipe.value = recipe
-            recipes.value = recipess
+            val result = recipeRepository.search(token = token, page = 2, query = query
+            )
+            recipes.value = result
         }
     }
+
+    fun onInputChanged(newInput: String) {
+        this.query.value = newInput
+    }
+
 
 }
